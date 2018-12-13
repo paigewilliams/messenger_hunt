@@ -19,8 +19,7 @@
         <td><%= post.title %></td>
         <td><%= status = post.read == true ? 'read' : 'unread' %></td>
         <td><%= link_to 'Show', post, :read =>'true' %></td>
-        <!-- <td><%= link_to 'Edit', edit_post_path(post) %></td> -->
-        <!-- <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+
       </tr>
     <% end %>
   </tbody>
@@ -46,8 +45,7 @@
         <td><%= User.find(post.send_to.to_i).email %></td>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
-        <!-- <td><%= link_to 'Show', post %></td> -->
-        <!-- <td><%= link_to 'Edit', edit_post_path(post) %></td> -->
+
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
