@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    # binding.pry
   end
 
   # GET /posts/new
@@ -23,27 +24,12 @@ class PostsController < ApplicationController
 
     @post = Post.new
 
-
-    # @User.all.each
-    #   {|user| [user.email, user.id]
-    # # @users = @User.all
-  end
-
-  def user_select
-    users = User.all
-    users_array = []
-    users.each do |user|
-      temp_array = []
-      temp_array.push(user.email)
-      temp_array.push(user.id)
-      users_array.push(temp_array)
-    end
-    users_array
   end
 
   # GET /posts/1/edit
   def edit
   end
+
 
   # POST /posts
   # POST /posts.json
@@ -99,4 +85,16 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :send_to)
     end
+
+    def user_select
+      users = User.all
+      users_array = []
+      users.each do |user|
+        users_array.push([user.email,user.id])
+      end
+      users_array
+    end
+
+
+
 end
