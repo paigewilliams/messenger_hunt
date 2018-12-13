@@ -1,0 +1,5 @@
+class AddSendtoColumnToPosts < ActiveRecord::Migration[5.2]
+  def change
+    add_column :posts, :send_to, :int
+  end
+end

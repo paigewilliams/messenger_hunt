@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Created by:</strong>
+  <%= User.find(@post.created_by.to_i).email %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @post.title %>
 </p>

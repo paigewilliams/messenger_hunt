@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :posts
 
-  root 'sessions#new'
+  root 'posts#index'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

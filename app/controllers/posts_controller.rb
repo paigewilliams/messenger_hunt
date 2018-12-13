@@ -4,7 +4,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @inbox_messages = []
+    @sent_messages = []
+    if current_user
+      @inbox_messages = Post.where("send_to = #{session[:user_id]}")
+      @sent_messages = Post.where("created_by = #{session[:user_id]}")
+    end
   end
 
   # GET /posts/1
@@ -14,7 +19,26 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    @user_select = user_select
+
     @post = Post.new
+
+
+    # @User.all.each
+    #   {|user| [user.email, user.id]
+    # # @users = @User.all
+  end
+
+  def user_select
+    users = User.all
+    users_array = []
+    users.each do |user|
+      temp_array = []
+      temp_array.push(user.email)
+      temp_array.push(user.id)
+      users_array.push(temp_array)
+    end
+    users_array
   end
 
   # GET /posts/1/edit
@@ -24,8 +48,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
 
+    # this feesl hackey. refactor......LATER.
+    temp_params = post_params
+    temp_params[:created_by] = session[:user_id]
+    # binding.pry
+    @post = Post.new(temp_params)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -69,6 +97,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :send_to)
     end
 end

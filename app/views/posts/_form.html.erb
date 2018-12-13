@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :fwends %>
+    <%= form.select(:send_to, options_for_select(User.where.not("id = #{session[:user_id]}").map {|u| [u.email, u.id]})) %>
+    </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
