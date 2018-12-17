@@ -1,24 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>MessengerHunt</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if current_user  %>
-      <%= current_user.email %> | <%= link_to "Sign out", '/signout' %>
-    <% else %>
-      <%= link_to "Sign up", '/signup'  %> | <%= link_to "Sign in", '/signin' %>
-    <% end %>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Messege ina Bottle</span>
+      <div class="float-right">
+        <% if current_user  %>
+        <small> <%= current_user.name %> | <%= link_to "Sign out", '/signout' %> </small>
+        <% else %>
+        <small> <%= link_to "Sign up", '/signup'  %> | <%= link_to "Sign in", '/signin' %> </small>
+        <% end %>
 
-      <%= flash[:alert]  %>
-      <%= flash[:notice]  %>
+      </div>
+    </nav>
 
-    <%= yield %>
+    <div class="container-fluid">
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= flash[:alert] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= flash[:notice]  %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
+
+      <%= yield %>
+    </div>
+
   </body>
 </html>

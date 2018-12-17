@@ -1,0 +1,35 @@
+<%= form_for @messege, url: {action: "create"} do |form| %>
+<div class="row">
+
+  <div class="col-md-5">
+      <div class="form-group">
+        <%= form.label :Friends %>
+        <%= form.select :to_user,
+          options_for_select(User.where.not("id = #{current_user.id}").map {|u| [u.name.capitalize, u.id]}), {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :Messege %>
+        <%= form.text_area :body, class: "form-control", size: "24x6" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="form-group">
+      <%= form.label :Latitude %>
+      <%= form.text_field :msg_lat, class: "form-control", value: session[:lat] %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :Longitude %>
+      <%= form.text_field :msg_long, class: "form-control", value: session[:long] %>
+    </div>
+
+  </div>
+
+</div>
+<% end %>

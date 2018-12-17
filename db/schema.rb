@@ -10,27 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_212413) do
+ActiveRecord::Schema.define(version: 2018_12_16_220416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
+  create_table "messeges", force: :cascade do |t|
+    t.integer "to_user"
+    t.integer "from_user"
     t.string "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "created_by"
-    t.integer "send_to"
     t.boolean "read"
+    t.decimal "msg_lat"
+    t.decimal "msg_long"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
+    t.string "name"
     t.string "password_hash"
     t.string "password_salt"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

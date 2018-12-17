@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:user_id]
+      session[:lat] = 45.520626
+      session[:long] = -122.6795871
       @current_user ||= User.find(session[:user_id])
     end
   end
