@@ -71,7 +71,7 @@ var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
 
   // When drag ends, center (pan) the map on the marker position
   dynamicMarker.addListener('dragend', function() {
-    map.panTo(dynamicMarker.getPosition());
+    mapAll.panTo(dynamicMarker.getPosition());
   });
 
 //All Static Markers

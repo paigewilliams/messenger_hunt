@@ -16,7 +16,6 @@ class MessagesController < ApplicationController
           @close_msg.push(coor)
         end
       end
-      binding.pry
     end
 
 

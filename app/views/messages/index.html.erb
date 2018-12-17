@@ -7,23 +7,48 @@
 <% end %>
 <h1>Inbox</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th width=250px>From</th>
-      <th>Read</th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col">
+    <table>
+      <thead>
+        <tr>
+          <th width=250px>From</th>
+          <th>Read</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @inbox.each do |message| %>
-      <tr>
-        <td width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
-        <td><%= status = message.read == true ? 'read' : 'unread' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @inbox.each do |message| %>
+        <tr>
+          <td width=250px><%= User.find(message.from_user.to_i).name %></td>
+          <td><%= status = message.read == true ? 'read' : 'unread' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col">
+    <table>
+      <thead>
+        <tr>
+          <th width=250px>From</th>
+          <th>Read</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @close_msg.each do |message| %>
+        <tr>
+          <td width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
+          <td><%= status = message.read == true ? 'read' : 'unread' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 <br>
 
@@ -67,8 +92,8 @@ place.longitude
 <%= link_to 'New message', new_user_message_path, class: "btn btn-secondary" %>
 
 <%= form_tag("/checkin", method: "get") do %>
-<%= text_field_tag(:message_msg_lat) %>
-<%= text_field_tag(:message_msg_long) %>
+<%= text_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
+<%= text_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
 <%= submit_tag("Check In") %>
 <% end %>
 
