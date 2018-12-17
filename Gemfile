@@ -15,6 +15,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.3'
 gem 'bcrypt', '~> 3.1.12'
+gem 'pivotal_git_scripts'
+
 
 
 group :development, :test do
