@@ -39,25 +39,29 @@
 
     <div class="container-fluid">
 
-      <% if flash[:alert] %>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <%= flash[:alert] %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <% end %>
 
-      <% if flash[:notice] %>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <%= flash[:notice]  %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <% end %>
 
       <div class="row">
+
+        <% if flash[:alert] %>
+          <div class="alert alert-danger alert-dismissible fade show flash_msg" role="alert">
+            <%= flash[:alert] %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+
+        <% if flash[:notice] %>
+          <div class="alert alert-success alert-dismissible fade show flash_msg" role="alert">
+            <%= flash[:notice]  %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+
+
         <div class="col-md-9" style="margin: 0 -15px;">
           <div id="map-all"></div>
         </div>

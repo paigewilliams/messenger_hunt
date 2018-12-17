@@ -5,9 +5,43 @@
     </script>
 <% end %>
 <%= form_for @message, url: {action: "create"} do |form| %>
+
+<div class="row">
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <%= form.label :Latitude %>
+        <%= form.text_field :msg_lat, class: "form-control", value: session[:lat] %>
+      </div>
+
+
+
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <%= form.label :Longitude %>
+        <%= form.text_field :msg_long, class: "form-control", value: session[:long] %>
+      </div>
+
+    </div>
+
+
+</div>
+
+
 <div class="row">
 
-  <div class="col-md-5">
+
+
+  <div class="col-md-12">
+
+
+
+
       <div class="form-group">
         <%= form.label :Friends %>
         <%= form.select :to_user,
@@ -24,22 +58,7 @@
       </div>
   </div>
 
-  <div class="col-md-2">
-    <div class="form-group">
-      <%= form.label :Latitude %>
-      <%= form.text_field :msg_lat, class: "form-control", value: session[:lat] %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :Longitude %>
-      <%= form.text_field :msg_long, class: "form-control", value: session[:long] %>
-    </div>
-
-  </div>
 
 </div>
 
 <% end %>
-<p>
-  <div id="map2"></div>
-</p>
