@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :places
+  # resources :places
 
   resources :users, only: [:index] do
     resources :messages, only: [:index, :create, :new, :show, :destroy]

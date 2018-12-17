@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <% provide :head_tags do %>
+      <meta name='turbolinks-visit-control' content='reload'>
+      <script>
+          document.addEventListener("DOMContentLoaded", initMapAll);
+      </script>
+    <% end %>
+
+
     <title>MessengerHunt</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -47,11 +56,21 @@
           </button>
         </div>
       <% end %>
-      <%= yield %>
 
+      <div class="row">
+        <div class="col-md-9" style="margin: 0 -15px;">
+          <div id="map-all"></div>
+        </div>
+
+        <div class="col-md-3">
+          <%= yield %>
+        </div>
+
+      </div>
 
 
     </div>
+
 
   </body>
 </html>
