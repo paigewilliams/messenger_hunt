@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
       if distance < 0.1
           @close_msg.push(coor)
         end
-      end
+      end 
     end
 
 

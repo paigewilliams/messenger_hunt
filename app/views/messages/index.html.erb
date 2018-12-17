@@ -42,6 +42,10 @@
         <tr>
           <td width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
           <td><%= status = message.read == true ? 'read' : 'unread' %></td>
+          <td class="body" value="<%= message.body %>" style="display: none"><%= message.body %> </td>
+          <td class="foundLat" value="<%= message.msg_lat %>" style="display: none"><%= message.msg_lat %> </td>
+          <td class="foundLong" value="<%= message.msg_long %>" style="display: none"><%= message.msg_long %> </td>
+          </div>
         </tr>
         <% end %>
       </tbody>
@@ -53,6 +57,7 @@
 <br>
 
 <h1>Sent</h1>
+<div>
 
 <table>
   <thead>
@@ -81,6 +86,8 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
 
 <br>
 <!--

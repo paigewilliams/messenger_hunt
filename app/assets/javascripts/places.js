@@ -1,26 +1,8 @@
 // Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-function initMap(lat, lng) {
-
-  var myCoords = new google.maps.LatLng(lat, lng);
-
-  var mapOptions = {
-    center: myCoords,
-    zoom: 14
-  };
-
-  var map = new google.maps.Map(document.getElementById('map'),mapOptions);
-
-  var marker = new google.maps.Marker({
-    position: myCoords,
-    map: map
-  });
-}
-
-// ====================================================================================
+// All this logic will automatically be available in application.js. ====================================================================================
 
 function initMapAll() {
-  //Single Dynamic Marker
+  //Checkin Marker
 
   var lat = document.getElementById('message_msg_lat').value;
   var lng = document.getElementById('message_msg_long').value;
@@ -38,7 +20,7 @@ function initMapAll() {
     zoom: 14
   };
 
-var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
+  var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
 
   var dynamicMarker = new google.maps.Marker({
     position: myCoords,
@@ -74,7 +56,7 @@ var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
     mapAll.panTo(dynamicMarker.getPosition());
   });
 
-//All Static Markers
+//Sent Messages Markers
   var allLat = document.getElementsByClassName('message_msg_lat');
   var allLng = document.getElementsByClassName('message_msg_long');
   var locations = []
@@ -88,8 +70,6 @@ var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
     locations.push(coordinate)
   };
 
-
-
   for(var i = 0; i < locations.length; i++){
     var marker = new google.maps.Marker({
       position: locations[i],
@@ -98,8 +78,29 @@ var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
   markers.push(marker)
 }
 
+//Readable Messages
+  var foundLat = document.getElementsByClassName('foundLat');
+  var foundLong = document.getElementsByClassName('foundLong');
+  var foundBody = document.getElementsByClassName('body')
+  var foundLocations = []
+  var foundMarkers = []
 
+  for(var i = 0; i < foundLat.length; i++){
+    var coordinate = {
+      lat: parseFloat(foundLat[i].getAttribute("value")),
+      lng: parseFloat(foundLong[i].getAttribute("value"))
+    }
+    foundLocations.push(coordinate)
+  };
 
+  for(var i = 0; i < foundLocations.length; i++){
+    var marker = new google.maps.Marker({
+      position: foundLocations[i],
+      map: mapAll,
+      title: 'test!'
+  });
+  foundmarkers.push(marker)
+  }
 }
 
 // ====================================================================================
@@ -159,5 +160,3 @@ function initMap2() {
     map.panTo(marker.getPosition());
   });
 }
-
-// ====================================================================================
