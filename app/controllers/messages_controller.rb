@@ -2,19 +2,29 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :destroy]
 
   def index
-    # binding.pry
-
     @inbox = []
     @outbox = []
     if current_user
       @inbox = Message.where("to_user = #{current_user.id}")
       @outbox = Message.where("from_user = #{current_user.id}")
     end
-  end
+    @checkin = [session[:lat].to_f, session[:long].to_f]
+    @close_msg = []
+    @inbox.each do |coor|
+      distance = Haversine.distance(@checkin, [coor.msg_lat, coor.msg_long]).to_miles
+      if distance < 0.1
+          @close_msg.push(coor)
+        end
+      end
+      binding.pry
+    end
+
+
 
   def show
     @message.read = true
     @message.save
+
   end
 
   def new

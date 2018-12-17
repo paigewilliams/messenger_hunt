@@ -16,7 +16,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.3'
 gem 'bcrypt', '~> 3.1.12'
 gem 'pivotal_git_scripts'
-
+gem 'haversine'
 
 
 group :development, :test do
