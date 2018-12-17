@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
-      redirect_to user_messeges_path(current_user)
+      redirect_to user_messages_path(current_user)
     end
 
   end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     if @user
       flash[:notice] = 'Sucesfully logged in '
       session[:user_id] = @user.id
-      redirect_to user_messeges_path(current_user)
+      redirect_to user_messages_path(current_user)
     else
       flash[:alert] = 'Unsuccessful attempt :-( '
       redirect_to signin_path

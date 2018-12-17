@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password
   validates :name, :presence => true, :uniqueness => true
   before_save :encrypt_password
-  has_many :messeges, foreign_key: 'from_user', dependent: :delete_all
+  has_many :messages, foreign_key: 'from_user', dependent: :delete_all
 
   def self.authenticate(name, password)
     user = User.find_by "name = ?", name
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def my_msgs
-    Messege.where("to_user = ?", self.id)
+    Message.where("to_user = ?", self.id)
   end
 
 end

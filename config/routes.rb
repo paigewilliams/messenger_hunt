@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :places
 
   resources :users, only: [:index] do
-    resources :messeges, only: [:index, :create, :new, :show, :destroy]
+    resources :messages, only: [:index, :create, :new, :show, :destroy]
   end
 
   root 'sessions#new'

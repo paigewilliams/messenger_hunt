@@ -19,8 +19,8 @@ function initMap(lat, lng) {
 
 function initMapAll() {
 
-  var allLat = document.getElementsByClassName('place_latitude');
-  var allLng = document.getElementsByClassName('place_longitude');
+  var allLat = document.getElementsByClassName('message_msg_lat');
+  var allLng = document.getElementsByClassName('message_msg_long');
   var locations = []
   var markers = []
 
@@ -47,15 +47,15 @@ function initMapAll() {
 }
 
 function initMap2() {
-  var lat = document.getElementById('place_latitude').value;
-  var lng = document.getElementById('place_longitude').value;
+  var lat = document.getElementById('message_msg_lat').value;
+  var lng = document.getElementById('message_msg_long').value;
   // if not defined create default position
 
   if (!lat || !lng){
     lat=45.520788;
     lng=-122.677645;
-    document.getElementById('place_latitude').value = lat;
-    document.getElementById('place_longitude').value = lng;
+    document.getElementById('message_msg_lat').value = lat;
+    document.getElementById('message_msg_long').value = lng;
   }
 
   var myCoords = new google.maps.LatLng(lat, lng);
@@ -74,28 +74,28 @@ function initMap2() {
 
   //refresh marker postion and recenter map on marker
   function refreshMarker(){
-    var lat = document.getElementById('place_latitude').value;
-    var lng = document.getElementById('place_longitude').value;
+    var lat = document.getElementById('message_msg_lat').value;
+    var lng = document.getElementById('message_msg_long').value;
     var myCoords = new google.maps.LatLng(lat, lng);
     marker.setPosition(myCoords);
     map.setCenter(marker.getPosition());
   }
 
   // when input values change call refreshMarker
-  document.getElementById('place_latitude').onchange = refreshMarker;
-  document.getElementById('place_longitude').onchange = refreshMarker;
+  document.getElementById('message_msg_lat').onchange = refreshMarker;
+  document.getElementById('message_msg_long').onchange = refreshMarker;
 
   // when marker is dragged update input values
   marker.addListener('drag', function() {
     latlng = marker.getPosition();
     newlat=(Math.round(latlng.lat()*1000000))/1000000;
     newlng=(Math.round(latlng.lng()*1000000))/1000000;
-    document.getElementById('place_latitude').value = newlat;
-    document.getElementById('place_longitude').value = newlng;
+    document.getElementById('message_msg_lat').value = newlat;
+    document.getElementById('message_msg_long').value = newlng;
   });
 
   // When drag ends, center (pan) the map on the marker position
   marker.addListener('dragend', function() {
     map.panTo(marker.getPosition());
   });
-}7
+}

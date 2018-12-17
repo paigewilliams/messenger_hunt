@@ -11,13 +11,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmE8T1QkDeOjZxMhHU73L02DH-vJIvCG4' %>
     <%= yield(:head_tags) %>
-    
+
 
   </head>
 
   <body>
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Messege ina Bottle</span>
+      <span class="navbar-brand mb-0 h1">Message ina Bottle</span>
       <div class="float-right">
         <% if current_user  %>
         <small> <%= current_user.name %> | <%= link_to "Sign out", '/signout' %> </small>
@@ -47,9 +47,10 @@
           </button>
         </div>
       <% end %>
-
-
       <%= yield %>
+
+
+
     </div>
 
   </body>

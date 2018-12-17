@@ -1,0 +1,48 @@
+<h1>Inbox</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th width=250px>From</th>
+      <th>Read</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inbox.each do |message| %>
+      <tr>
+        <td width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
+        <td><%= status = message.read == true ? 'read' : 'unread' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Sent</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th width=250px>To</th>
+      <th>Body</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outbox.each do |message| %>
+      <tr>
+        <td><%= User.find(message.to_user.to_i).name %></td>
+        <td><%= message.body %></td>
+        <td>
+          <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New message', new_user_message_path, class: "btn btn-secondary" %>
