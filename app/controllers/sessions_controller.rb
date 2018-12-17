@@ -21,6 +21,12 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    
+    session[:lat] = nil
+    session[:long] = nil
+    # session[:user_lat] = nil
+    # session[:user_long] = nil
+
     flash[:notice] = "You've logged out "
     redirect_to '/'
   end

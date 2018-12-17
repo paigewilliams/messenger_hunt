@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :destroy]
 
   def index
+    # binding.pry
 
     @inbox = []
     @outbox = []

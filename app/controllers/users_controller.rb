@@ -20,6 +20,17 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
+  def checkin
+    # binding.pry
+    session[:lat] = params[:message_msg_lat].to_d
+    session[:long] = params[:message_msg_long].to_d
+
+    flash[:notice] = "You've successfully checked in @ #{session[:lat]}, #{session[:long]} "
+
+
+    redirect_to '/'
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)

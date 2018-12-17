@@ -66,7 +66,7 @@ place.longitude
 
 <%= link_to 'New message', new_user_message_path, class: "btn btn-secondary" %>
 
-<%= form_tag do %>
+<%= form_tag("/checkin", method: "get") do %>
 <%= text_field_tag(:message_msg_lat) %>
 <%= text_field_tag(:message_msg_long) %>
 <%= submit_tag("Check In") %>
