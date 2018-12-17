@@ -1,3 +1,10 @@
+
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+        document.addEventListener("DOMContentLoaded", initMapAll);
+    </script>
+<% end %>
 <h1>Inbox</h1>
 
 <table>
@@ -28,6 +35,8 @@
       <th width=250px>To</th>
       <th>Body</th>
       <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
 
@@ -37,12 +46,33 @@
         <td><%= User.find(message.to_user.to_i).name %></td>
         <td><%= message.body %></td>
         <td>
-          <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%></td>
+          <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%>
+        </td>
+
+        <td class="message_msg_lat" value="<%= message.msg_lat %>"><%= message.msg_lat %></td>
+        <td class="message_msg_long" value="<%= message.msg_long %>"><%= message.msg_long %></td>
+
         </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<!--
+place.latitude
+place.longitude
+ -->
+</p>
 
 <%= link_to 'New message', new_user_message_path, class: "btn btn-secondary" %>
+
+<%= form_tag do %>
+<%= text_field_tag(:message_msg_lat) %>
+<%= text_field_tag(:message_msg_long) %>
+<%= submit_tag("Check In") %>
+<% end %>
+
+<p>
+  <div id="map-all">
+
+  </div>

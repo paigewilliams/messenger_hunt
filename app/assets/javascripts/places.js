@@ -17,8 +17,64 @@ function initMap(lat, lng) {
   });
 }
 
-function initMapAll() {
+// ====================================================================================
 
+function initMapAll() {
+  //Single Dynamic Marker
+
+  var lat = document.getElementById('message_msg_lat').value;
+  var lng = document.getElementById('message_msg_long').value;
+  // if not defined create default position
+  if (!lat || !lng){
+    lat=45.520788;
+    lng=-122.677645;
+    document.getElementById('message_msg_lat').value = lat;
+    document.getElementById('message_msg_long').value = lng;
+  }
+
+  var myCoords = new google.maps.LatLng(lat, lng);
+  var mapOptions = {
+    center: myCoords,
+    zoom: 14
+  };
+
+var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
+
+  var dynamicMarker = new google.maps.Marker({
+    position: myCoords,
+    animation: google.maps.Animation.DROP,
+    map: mapAll,
+    draggable: true,
+    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+  });
+
+  function refreshMarker(){
+    var lat = document.getElementById('message_msg_lat').value;
+    var lng = document.getElementById('message_msg_long').value;
+    var myCoords = new google.maps.LatLng(lat, lng);
+    dynamicMarker.setPosition(myCoords);
+    map.setCenter(dynamicMarker.getPosition());
+  }
+
+  // when input values change call refreshMarker
+  document.getElementById('message_msg_lat').onchange = refreshMarker;
+  document.getElementById('message_msg_long').onchange = refreshMarker;
+
+  // when marker is dragged update input values
+  dynamicMarker.addListener('drag', function() {
+    latlng = dynamicMarker.getPosition();
+    newlat=(Math.round(latlng.lat()*1000000))/1000000;
+    newlng=(Math.round(latlng.lng()*1000000))/1000000;
+    document.getElementById('message_msg_lat').value = newlat;
+    document.getElementById('message_msg_long').value = newlng;
+  });
+
+  // When drag ends, center (pan) the map on the marker position
+  dynamicMarker.addListener('dragend', function() {
+    map.panTo(dynamicMarker.getPosition());
+  });
+
+//All Static Markers
   var allLat = document.getElementsByClassName('message_msg_lat');
   var allLng = document.getElementsByClassName('message_msg_long');
   var locations = []
@@ -32,19 +88,22 @@ function initMapAll() {
     locations.push(coordinate)
   };
 
-  var mapAll = new google.maps.Map(document.getElementById('map-all'), {
-    zoom: 12,
-    center: {lat: 45.520788, lng: -122.677645}
-  })
+
 
   for(var i = 0; i < locations.length; i++){
     var marker = new google.maps.Marker({
       position: locations[i],
-      map: mapAll
-    });
-    markers.push(marker)
-  };
+      map: mapAll,
+  });
+  markers.push(marker)
 }
+
+
+
+}
+
+// ====================================================================================
+
 
 function initMap2() {
   var lat = document.getElementById('message_msg_lat').value;
@@ -69,7 +128,8 @@ function initMap2() {
     position: myCoords,
     animation: google.maps.Animation.DROP,
     map: map,
-    draggable: true
+    draggable: true,
+
   });
 
   //refresh marker postion and recenter map on marker
@@ -99,3 +159,5 @@ function initMap2() {
     map.panTo(marker.getPosition());
   });
 }
+
+// ====================================================================================
