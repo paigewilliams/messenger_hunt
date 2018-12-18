@@ -285,12 +285,17 @@ function initMapAll() {
   map.mapTypes.set('styled_map', mapStyle());
   map.setMapTypeId('styled_map')
 
+  var iconRed ={
+    url: '/mapmarkerhighresred.png',
+    scaledSize: new google.maps.Size(25, 36)
+  }
+
   var dynamicMarker = new google.maps.Marker({
     position: myCoords,
     animation: google.maps.Animation.DROP,
     map: map,
     draggable: true,
-    icon: '/mapmarkerredsmall.png'
+    icon: iconRed
   });
 
   function refreshMarker(){
@@ -333,11 +338,16 @@ function initMapAll() {
     locations.push(coordinate)
   };
 
+  var iconGrey ={
+    url: '/mapmarkeradj.png',
+    scaledSize: new google.maps.Size(36, 33)
+  }
+
   for(var i = 0; i < locations.length; i++){
     var marker = new google.maps.Marker({
       position: locations[i],
       map: map,
-      icon: '/mapmarkergreysmall.png'
+      icon: iconGrey
   });
   markers.push(marker)
 }
@@ -358,6 +368,11 @@ function initMapAll() {
     foundLocations.push(coordinate)
   };
 
+  var iconBlue = {
+    url: 'mapmarkerhighresblue.png',
+    scaledSize: new google.maps.Size(25, 36)
+  }
+
   for(var i = 0; i < foundLocations.length; i++){
     var infoWindow = new google.maps.InfoWindow({
       content: foundBody[i].getAttribute("value")
@@ -365,7 +380,7 @@ function initMapAll() {
     var marker = new google.maps.Marker({
       position: foundLocations[i],
       map: map,
-      icon: '/mapmarkerbluesmall.png'
+      icon: '/mapmarkerhighresblue.png'
     });
     marker.addListener('click', function(){
       infoWindow.open(map, marker);
