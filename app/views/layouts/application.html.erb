@@ -18,7 +18,7 @@
     <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1">Message ina Bottle</span>
         <% if current_user  %>
-        <small>Checked in at :   <i class="fas fa-map-marker-alt"></i> <%= session[:lat] %>, <%= session[:lat] %></small>
+        <small>Checked in at :   <i class="fas fa-map-marker-alt"></i> <%= session[:lat] %>, <%= session[:long] %></small>
 
         <div class="float-right">
         <small> <%= current_user.name %> | <%= link_to "Sign out", '/signout' %> </small>
