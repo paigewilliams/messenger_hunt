@@ -4,7 +4,7 @@
 
 ## Contributors
 
-### Paige Williams, Ben Kirby, Jared Reando, Ralph Perdomo  
+### _Paige Williams, Ben Kirby, Jared Reando, Ralph Perdomo_ 
 
 ## Description
 
