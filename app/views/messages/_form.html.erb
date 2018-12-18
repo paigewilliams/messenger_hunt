@@ -1,7 +1,7 @@
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'>
     <script>
-        document.addEventListener("DOMContentLoaded", initMap2);
+        document.addEventListener("DOMContentLoaded", initMapAll);
     </script>
 <% end %>
 <%= form_for @message, url: {action: "create"} do |form| %>

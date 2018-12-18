@@ -266,6 +266,9 @@ function options(myCoords){
 };
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js. ====================================================================================
+// function setLatLong(){
+//
+// }
 
 function initMapAll() {
   //Checkin Marker
@@ -278,6 +281,7 @@ function initMapAll() {
     document.getElementById('message_msg_lat').value = lat;
     document.getElementById('message_msg_long').value = lng;
   }
+
   var myCoords = new google.maps.LatLng(lat, lng);
   var map = new google.maps.Map(document.getElementById('map-all'), options(myCoords))
 
@@ -373,7 +377,7 @@ function initMapAll() {
   };
 
   var iconBlue = {
-    url: 'mapmarkerhighresblue.png',
+    url: '/mapmarkerhighresblue.png',
     scaledSize: new google.maps.Size(25, 36)
   }
 
@@ -384,70 +388,13 @@ function initMapAll() {
     var marker = new google.maps.Marker({
       position: foundLocations[i],
       map: map,
-      icon: '/mapmarkerhighresblue.png'
+      icon: iconBlue
     });
     marker.addListener('click', function(){
       infoWindow.open(map, marker);
     });
     foundMarkers.push(marker)
   }
-}
-
-// ====================================================================================
-
-
-function initMap2() {
-  var lat = document.getElementById('message_msg_lat').value;
-  var lng = document.getElementById('message_msg_long').value;
-  // if not defined create default position
-
-  if (!lat || !lng){
-    lat=45.520788;
-    lng=-122.677645;
-    document.getElementById('message_msg_lat').value = lat;
-    document.getElementById('message_msg_long').value = lng;
-  }
-
-  var myCoords = new google.maps.LatLng(lat, lng);
-
-  var map = new google.maps.Map(document.getElementById('map-all'), options(myCoords));
-  var marker = new google.maps.Marker({
-    position: myCoords,
-    animation: google.maps.Animation.DROP,
-    map: map,
-    draggable: true,
-
-  });
-
-  map.mapTypes.set('styled_map', mapStyle());
-  map.setMapTypeId('styled_map');
-
-  //refresh marker postion and recenter map on marker
-  function refreshMarker(){
-    var lat = document.getElementById('message_msg_lat').value;
-    var lng = document.getElementById('message_msg_long').value;
-    var myCoords = new google.maps.LatLng(lat, lng);
-    marker.setPosition(myCoords);
-    map.setCenter(marker.getPosition());
-  }
-
-  // when input values change call refreshMarker
-  document.getElementById('message_msg_lat').onchange = refreshMarker;
-  document.getElementById('message_msg_long').onchange = refreshMarker;
-
-  // when marker is dragged update input values
-  marker.addListener('drag', function() {
-    latlng = marker.getPosition();
-    newlat=(Math.round(latlng.lat()*1000000))/1000000;
-    newlng=(Math.round(latlng.lng()*1000000))/1000000;
-    document.getElementById('message_msg_lat').value = newlat;
-    document.getElementById('message_msg_long').value = newlng;
-  });
-
-  // When drag ends, center (pan) the map on the marker position
-  marker.addListener('dragend', function() {
-    map.panTo(marker.getPosition());
-  });
 }
 
 // ====================================================================================
