@@ -20,15 +20,21 @@
 
 </div>
 
-<div class="">
-  <!-- <button type="button" class="btn btn-primary">
-    You have <span class="badge badge-light">4</span> unlocked messages
-  </button> -->
+<div class="unread_msgs_count">
+  <button type="button" class="btn btn-primary">
+    You have <span class="badge badge-light"><%= @hidden_msgs_count %></span> unlocked messages
+  </button>
+</div>
+
+
+
+<div>
 
 
   <h3>Messages unlocked here</h3>
 
   <div class="hidden_inbox">
+    <!-- nearby messages list in DOM here -->
     <% @close_msg.each do |message| %>
       <p class="body"><%= message.body %></p>
       <p class="foundLat"><%= message.msg_lat %></p>
@@ -36,95 +42,64 @@
     <% end %>
   </div>
 
-  <div class="">
-    <!-- <% @close_msg.each do |message| %>
 
-
-    <% end %> -->
-
-
-  </div>
 
 
   <h3>Previously read messages</h3>
-  <div class="list-group">
-  <% @inbox.each do |message| %>
-    <a href="#" class="list-group-item list-group-item-action">
-      <i class="fas fa-map-marker-alt"></i>
-      <small><%= message.msg_lat %>, <%= message.msg_lat %></small>
+
+  <% @has_read_history.each do |message| %>
+
+    <div class="card" style="width: 50%;">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+
+
+    <i class="fas fa-map-marker-alt"></i>
+
+
+      <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%>
+
+
+
+      <%= message.body %>
+      <small><%= message.msg_lat %>, <%= message.msg_long %></small>
     </a>
   <% end %>
-  </div>
 
 
 
-</div>
-
-
-<div class="row">
-  <div class="col">
-
-
-
-
-
-
-  </div>
-  <div class="col">
-    <!-- <table>
-      <thead>
-        <tr>
-          <th width=250px>From</th>
-          <th>Read</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @close_msg.each do |message| %>
-        <tr>
-          <td  class="fromName" width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
-          <td><%= status = message.read == true ? 'read' : 'unread' %></td>
-          <td class="body" value="<%= message.body %>" style="display: none"><%= message.body %> </td>
-          <td class="foundLat" value="<%= message.msg_lat %>" style="display: none"><%= message.msg_lat %> </td>
-          <td class="foundLong" value="<%= message.msg_long %>" style="display: none"><%= message.msg_long %> </td>
-          </div>
-        </tr>
-        <% end %>
-      </tbody>
-    </table> -->
-  </div>
 </div>
 
 
 <br>
 
-<div style="display: none;">
+<div style="">
+  <hr>
+  <h4>Sent Messages</h4>
 
   <table>
     <thead>
       <tr>
         <th width=250px>To</th>
-        <th>Body</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th colspan="2"><i class="fas fa-map-marker-alt"></i></th>
       </tr>
     </thead>
-
     <tbody>
       <% @outbox.each do |message| %>
         <tr>
-          <td><%= User.find(message.to_user.to_i).name %></td>
-          <td><%= message.body %></td>
-          <td>
-            <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%>
-          </td>
-
-          <td class="message_msg_lat" value="<%= message.msg_lat %>"><%= message.msg_lat %></td>
-          <td class="message_msg_long" value="<%= message.msg_long %>"><%= message.msg_long %></td>
-
-          </tr>
+          <td><%= User.find(message.to_user.to_i).name.capitalize %></td>
+          <td class="message_msg_lat" value="<%= message.msg_lat %>"><small><%= message.msg_lat %></small></td>
+          <td class="message_msg_long" value="<%= message.msg_long %>"><small><%= message.msg_long %></small></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
+  <hr>
+
 </div>
