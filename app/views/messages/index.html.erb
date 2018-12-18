@@ -7,20 +7,15 @@
 
 <div class="checkin-box">
 
-
   <%= form_tag("/checkin", method: "get") do %>
   <%= hidden_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
   <%= hidden_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
   <%= submit_tag("Check In", class: "btn btn-secondary") %>
   <% end %>
 
-
-
-
 </div>
 
 <div class="newmsg-box">
-  <p><small>You're at : <%= session[:lat] %>, <%= session[:lat] %><small></p>
   <%= link_to 'New message', new_user_message_path, class: "btn btn-primary" %>
 
 </div>
@@ -31,13 +26,16 @@
   </button> -->
 
 
-  <h3>Found messages</h3>
+  <h3>Messages unlocked here</h3>
 
 
   <h3>Previously read messages</h3>
   <div class="list-group">
   <% @inbox.each do |message| %>
-    <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-map-marker-alt"></i> <small><%= message.msg_lat %>, <%= message.msg_lat %> </small></a>
+    <a href="#" class="list-group-item list-group-item-action">
+      <i class="fas fa-map-marker-alt"></i>
+      <small><%= message.msg_lat %>, <%= message.msg_lat %></small>
+    </a>
   <% end %>
   </div>
 

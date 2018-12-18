@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     session[:lat] = params[:message_msg_lat].to_d
     session[:long] = params[:message_msg_long].to_d
 
-    flash[:notice] = "You've successfully checked in @ #{session[:lat]}, #{session[:long]} "
+    # flash[:notice] = "You've successfully checked in @ #{session[:lat]}, #{session[:long]} "
 
     redirect_to '/'
   end
