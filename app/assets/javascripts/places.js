@@ -81,10 +81,12 @@ function initMapAll() {
 //Readable Messages
   var foundLat = document.getElementsByClassName('foundLat');
   var foundLong = document.getElementsByClassName('foundLong');
-  var foundBody = document.getElementsByClassName('body')
+  var foundBody = document.getElementsByClassName('body');
+  var fromName = document.getElementsByClassName('fromName');
   var foundLocations = []
   var foundMarkers = []
-
+  var allNames = []
+  debugger
   for(var i = 0; i < foundLat.length; i++){
     var coordinate = {
       lat: parseFloat(foundLat[i].getAttribute("value")),
@@ -93,13 +95,19 @@ function initMapAll() {
     foundLocations.push(coordinate)
   };
 
+
   for(var i = 0; i < foundLocations.length; i++){
+    var infoWindow = new google.maps.InfoWindow({
+      content: foundBody[i].getAttribute("value")
+    });
     var marker = new google.maps.Marker({
       position: foundLocations[i],
       map: mapAll,
-      title: 'test!'
-  });
-  foundmarkers.push(marker)
+    });
+    marker.addListener('click', function(){
+      infoWindow.open(mapAll, marker);
+    });
+    foundMarkers.push(marker)
   }
 }
 
