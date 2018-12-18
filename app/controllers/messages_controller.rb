@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 
     @has_read_history = []
 
-    binding.pry
+
 
     # @inbox = Message.where("to_user = #{current_user.id} AND read='true'")
 

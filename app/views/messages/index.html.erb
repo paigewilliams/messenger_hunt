@@ -16,7 +16,7 @@
 </div>
 
 <div class="newmsg-box">
-  <%= link_to 'New message', new_user_message_path, class: "btn btn-primary" %>
+  <%= link_to 'New Message', new_user_message_path, class: "btn btn-primary" %>
 
 </div>
 
@@ -82,11 +82,11 @@
       <tbody>
         <% @close_msg.each do |message| %>
         <tr>
-          <td  class="fromName" width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
+          <td class="fromName" width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
           <td><%= status = message.read == true ? 'read' : 'unread' %></td>
-          <td class="body" value="<%= message.body %>" style="display: none"><%= message.body %> </td>
-          <td class="foundLat" value="<%= message.msg_lat %>" style="display: none"><%= message.msg_lat %> </td>
-          <td class="foundLong" value="<%= message.msg_long %>" style="display: none"><%= message.msg_long %> </td>
+          <td class="body" value="<%= message.body %>" style="display: none"></td>
+          <td class="foundLat" value="<%= message.msg_lat %>" style="display: none"></td>
+          <td class="foundLong" value="<%= message.msg_long %>" style="display: none"></td>
           </div>
         </tr>
         <% end %>

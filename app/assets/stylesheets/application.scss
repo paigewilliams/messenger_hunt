@@ -1,4 +1,29 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+body {
+  background-color: #F7F7F7;
+  color: #36393F;
+}
+
+a {
+  color: #1E6583;
+}
+
+.btn {
+  font-family: Pacifico;
+  font-size: 24px;
+}
+
+.navbar {
+  background-color: #F7F7F7;
+
+}
+
+.navbar-brand {
+  font-family: Pacifico;
+  font-size: 30px;
+}
 
 div.flash_msg {
   z-index: 999;
@@ -28,10 +53,20 @@ div.newmsg-box {
 
   display: inline-block;
   width: 23%;
+  background-color: #1E6583 !important;
+  border-color: #1E6583
+
 }
 
 .checkin-box input[type=submit] {
   width: 100%;
+  background-color: #7D2F36 !important;
+  border-color: #7D2F36
+
+}
+
+#ui {
+  background-color: #F7F7F7;
 }
 
 #map {
@@ -46,4 +81,14 @@ div.newmsg-box {
 #map-all {
   width: 100%;
   height: calc(100vh - 56px);
+}
+
+#sign-in-btn {
+  background-color: #7D2F36 !important;
+  border-color: #7D2F36
+}
+
+#send {
+  background-color: #1E6583 !important;
+  border-color: #1E6583
 }
