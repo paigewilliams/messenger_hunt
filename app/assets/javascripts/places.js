@@ -252,14 +252,23 @@ function mapStyle(){
     {name: 'Styled Map'});
     return styledMapType
   };
+
+function options(myCoords){
+  var mapOptions = {
+    center: myCoords,
+    zoom: 14,
+    mapTypeControlOptions: {
+      mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+              'styled_map']
+    }
+  };
+  return mapOptions
+};
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js. ====================================================================================
 
 function initMapAll() {
-
-
   //Checkin Marker
-
   var lat = document.getElementById('message_msg_lat').value;
   var lng = document.getElementById('message_msg_long').value;
   // if not defined create default position
@@ -269,29 +278,19 @@ function initMapAll() {
     document.getElementById('message_msg_lat').value = lat;
     document.getElementById('message_msg_long').value = lng;
   }
-
   var myCoords = new google.maps.LatLng(lat, lng);
-  var mapOptions = {
-    center: myCoords,
-    zoom: 14,
-    mapTypeControlOptions: {
-      mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-              'styled_map']
-    }
-  };
-
-  var mapAll = new google.maps.Map(document.getElementById('map-all'), mapOptions)
+  var map = new google.maps.Map(document.getElementById('map-all'), options(myCoords))
 
   var dynamicMarker = new google.maps.Marker({
     position: myCoords,
     animation: google.maps.Animation.DROP,
-    map: mapAll,
+    map: map,
     draggable: true,
-    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    icon: '/mapmarkerredsmall.png'
   });
 
-  mapAll.mapTypes.set('styled_map', mapStyle());
-  mapAll.setMapTypeId('styled_map')
+  map.mapTypes.set('styled_map', mapStyle());
+  map.setMapTypeId('styled_map')
 
 
   function refreshMarker(){
@@ -317,7 +316,7 @@ function initMapAll() {
 
   // When drag ends, center (pan) the map on the marker position
   dynamicMarker.addListener('dragend', function() {
-    mapAll.panTo(dynamicMarker.getPosition());
+    map.panTo(dynamicMarker.getPosition());
   });
 
 //Sent Messages Markers
@@ -337,8 +336,8 @@ function initMapAll() {
   for(var i = 0; i < locations.length; i++){
     var marker = new google.maps.Marker({
       position: locations[i],
-      map: mapAll,
-
+      map: map,
+      icon: '/mapmarkergreysmall.png'
   });
   markers.push(marker)
 }
@@ -359,17 +358,17 @@ function initMapAll() {
     foundLocations.push(coordinate)
   };
 
-
   for(var i = 0; i < foundLocations.length; i++){
     var infoWindow = new google.maps.InfoWindow({
       content: foundBody[i].getAttribute("value")
     });
     var marker = new google.maps.Marker({
       position: foundLocations[i],
-      map: mapAll,
+      map: map,
+      icon: '/mapmarkerbluesmall.png'
     });
     marker.addListener('click', function(){
-      infoWindow.open(mapAll, marker);
+      infoWindow.open(map, marker);
     });
     foundMarkers.push(marker)
   }
@@ -391,16 +390,8 @@ function initMap2() {
   }
 
   var myCoords = new google.maps.LatLng(lat, lng);
-  var mapOptions = {
-    center: myCoords,
-    zoom: 14,
-    mapTypeControlOptions: {
-      mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-              'styled_map']
-    }
-  };
 
-  var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
+  var map = new google.maps.Map(document.getElementById('map2'), options(myCoords));
   var marker = new google.maps.Marker({
     position: myCoords,
     animation: google.maps.Animation.DROP,
