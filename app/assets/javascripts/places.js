@@ -295,7 +295,8 @@ function initMapAll() {
     animation: google.maps.Animation.DROP,
     map: map,
     draggable: true,
-    icon: iconRed
+    icon: iconRed,
+    zIndex: 999
   });
 
   function refreshMarker(){
@@ -406,7 +407,7 @@ function initMap2() {
 
   var myCoords = new google.maps.LatLng(lat, lng);
 
-  var map = new google.maps.Map(document.getElementById('map2'), options(myCoords));
+  var map = new google.maps.Map(document.getElementById('map-all'), options(myCoords));
   var marker = new google.maps.Marker({
     position: myCoords,
     animation: google.maps.Animation.DROP,
@@ -445,3 +446,5 @@ function initMap2() {
     map.panTo(marker.getPosition());
   });
 }
+
+// ====================================================================================
