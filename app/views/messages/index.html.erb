@@ -1,5 +1,26 @@
+<% provide :head_tags do %>
+<meta name='turbolinks-visit-control' content='reload'>
+<script>
+    document.addEventListener("DOMContentLoaded", initMapAll);
+</script>
+<% end %>
+
+<div class="checkin-box" style="">
+
+
+  <%= form_tag("/checkin", method: "get") do %>
+  <%= text_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
+  <%= text_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
+  <%= submit_tag("Check In", class: "btn btn-secondary") %>
+  <% end %>
+
+</div>
+
+<%= link_to 'New message', new_user_message_path, class: "btn btn-secondary" %>
+
 
 <h1>Inbox</h1>
+<p>you're at : <%= session[:lat] %>, <%= session[:lat] %></p>
 
 <div class="row">
   <div class="col">
@@ -46,6 +67,7 @@
 
 <br>
 
+<div style="display: none;">
 <h1>Sent</h1>
 
 <table>
@@ -79,17 +101,8 @@
 <br>
 
 
-</p>
 
-<%= link_to 'New message', new_user_message_path, class: "btn btn-secondary" %>
 
-<%= form_tag("/checkin", method: "get") do %>
-<%= text_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
-<%= text_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
-<%= submit_tag("Check In") %>
-<% end %>
-
-<p>
 
 
   </div>

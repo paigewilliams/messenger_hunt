@@ -5,6 +5,19 @@ div.flash_msg {
   position: fixed;
   right: 1rem;
   margin-top: 1rem;
+  background-color: #d4eddaf5 !important;
+}
+
+div.checkin-box {
+
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+
+}
+
+.checkin-box input[type=submit] {
+  width: 100%;
 }
 
 #map {
@@ -18,5 +31,5 @@ div.flash_msg {
 
 #map-all {
   width: 100%;
-  height: calc(100vh - 55px);
+  height: calc(100vh - 56px);
 }
