@@ -3,7 +3,11 @@
 
 body{
   background-color: #F7F7F7;
+  color: #36393F;
+}
 
+a{
+  color: #1E6583;
 }
 
 .btn {
@@ -77,4 +81,10 @@ div.newmsg-box {
 #map-all {
   width: 100%;
   height: calc(100vh - 56px);
+}
+
+#sign-in-btn {
+  background-color: #7D2F36 !important;
+  border-color: #7D2F36
+
 }
