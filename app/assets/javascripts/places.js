@@ -281,6 +281,10 @@ function initMapAll() {
   var myCoords = new google.maps.LatLng(lat, lng);
   var map = new google.maps.Map(document.getElementById('map-all'), options(myCoords))
 
+
+  map.mapTypes.set('styled_map', mapStyle());
+  map.setMapTypeId('styled_map')
+
   var dynamicMarker = new google.maps.Marker({
     position: myCoords,
     animation: google.maps.Animation.DROP,
@@ -288,10 +292,6 @@ function initMapAll() {
     draggable: true,
     icon: '/mapmarkerredsmall.png'
   });
-
-  map.mapTypes.set('styled_map', mapStyle());
-  map.setMapTypeId('styled_map')
-
 
   function refreshMarker(){
     var lat = document.getElementById('message_msg_lat').value;
