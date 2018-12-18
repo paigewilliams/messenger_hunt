@@ -1,8 +1,24 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 
+body{
+  background-color: #F7F7F7;
+
+}
+
 .btn {
   font-family: Pacifico;
+  font-size: 24px;
+}
+
+.navbar{
+  background-color: #F7F7F7;
+
+}
+
+.navbar-brand{
+  font-family: Pacifico;
+  font-size: 30px;
 }
 
 div.flash_msg {
@@ -43,6 +59,10 @@ div.newmsg-box {
   background-color: #7D2F36 !important;
   border-color: #7D2F36
 
+}
+
+#ui {
+  background-color: #F7F7F7;
 }
 
 #map {

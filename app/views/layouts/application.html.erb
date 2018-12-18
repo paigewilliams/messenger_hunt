@@ -15,8 +15,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Message ina Bottle</span>
+    <nav class="navbar">
+      <span class="navbar-brand mb-0 h1">Messenger Hunt</span>
         <% if current_user  %>
         <small>Checked in at :   <i class="fas fa-map-marker-alt"></i> <%= session[:lat] %>, <%= session[:long] %></small>
 
@@ -56,7 +56,7 @@
           <div id="map-all"></div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3" id="ui">
           <%= yield %>
         </div>
 
