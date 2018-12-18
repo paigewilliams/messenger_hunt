@@ -9,11 +9,25 @@ div.flash_msg {
 }
 
 div.checkin-box {
-
   display: block;
   width: 100%;
   margin: 10px 0;
 
+}
+
+div.newmsg-box {
+  position: fixed;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.newmsg-box a {
+
+  display: inline-block;
+  width: 23%;
 }
 
 .checkin-box input[type=submit] {
