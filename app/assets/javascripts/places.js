@@ -288,7 +288,7 @@ function initMapAll() {
   var iconRed ={
     url: '/mapmarkerhighresred.png',
     scaledSize: new google.maps.Size(25, 36)
-  }
+    }
 
   var dynamicMarker = new google.maps.Marker({
     position: myCoords,
@@ -363,8 +363,11 @@ function initMapAll() {
   var allNames = []
   for(var i = 0; i < foundLat.length; i++){
     var coordinate = {
-      lat: parseFloat(foundLat[i].getAttribute("value")),
-      lng: parseFloat(foundLong[i].getAttribute("value"))
+      // lat: parseFloat(foundLat[i].getAttribute("value")),
+      // lng: parseFloat(foundLong[i].getAttribute("value"))
+
+      lat: parseFloat(foundLat[i].textContent),
+      lng: parseFloat(foundLong[i].textContent)
     }
     foundLocations.push(coordinate)
   };
@@ -376,7 +379,7 @@ function initMapAll() {
 
   for(var i = 0; i < foundLocations.length; i++){
     var infoWindow = new google.maps.InfoWindow({
-      content: foundBody[i].getAttribute("value")
+      content: foundBody[i].textContent
     });
     var marker = new google.maps.Marker({
       position: foundLocations[i],

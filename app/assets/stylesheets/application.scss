@@ -1,5 +1,39 @@
 @import "bootstrap";
 
+div.flash_msg {
+  z-index: 999;
+  position: fixed;
+  right: 1rem;
+  margin-top: 1rem;
+  background-color: #d4eddaf5 !important;
+}
+
+div.checkin-box {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+
+}
+
+div.newmsg-box {
+  position: fixed;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.newmsg-box a {
+
+  display: inline-block;
+  width: 23%;
+}
+
+.checkin-box input[type=submit] {
+  width: 100%;
+}
+
 #map {
   width: 600px;
   height: 400px;
@@ -10,6 +44,6 @@
 }
 
 #map-all {
-  width: 600px;
-  height: 400px;
+  width: 100%;
+  height: calc(100vh - 56px);
 }
