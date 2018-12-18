@@ -28,6 +28,23 @@
 
   <h3>Messages unlocked here</h3>
 
+  <div class="hidden_inbox">
+    <% @close_msg.each do |message| %>
+      <p class="body"><%= message.body %></p>
+      <p class="foundLat"><%= message.msg_lat %></p>
+      <p class="foundLong"><%= message.msg_long %></p>
+    <% end %>
+  </div>
+
+  <div class="">
+    <!-- <% @close_msg.each do |message| %>
+
+
+    <% end %> -->
+
+
+  </div>
+
 
   <h3>Previously read messages</h3>
   <div class="list-group">
