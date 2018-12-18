@@ -11,7 +11,12 @@ class SessionsController < ApplicationController
     @user = User.authenticate(params[:name], params[:password])
     if @user
       flash[:notice] = 'Sucesfully logged in '
+
       session[:user_id] = @user.id
+      # home set to epicodus lat/long
+      session[:lat] = 45.520626
+      session[:long] = -122.6795871
+
       redirect_to user_messages_path(current_user)
     else
       flash[:alert] = 'Unsuccessful attempt :-( '
@@ -21,7 +26,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    
+
     session[:lat] = nil
     session[:long] = nil
     # session[:user_lat] = nil

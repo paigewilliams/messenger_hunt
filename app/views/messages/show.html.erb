@@ -1,3 +1,10 @@
+<% provide :head_tags do %>
+<meta name='turbolinks-visit-control' content='reload'>
+<script>
+    document.addEventListener("DOMContentLoaded", initMapAll);
+</script>
+<% end %>
+
 <p>
   <strong>Created by:</strong>
   <%= User.find(@message.from_user.to_i).name %>

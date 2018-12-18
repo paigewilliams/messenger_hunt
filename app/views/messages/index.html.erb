@@ -1,15 +1,77 @@
-
 <% provide :head_tags do %>
-    <meta name='turbolinks-visit-control' content='reload'>
-    <script>
-        document.addEventListener("DOMContentLoaded", initMapAll);
-    </script>
+<meta name='turbolinks-visit-control' content='reload'>
+<script>
+    document.addEventListener("DOMContentLoaded", initMapAll);
+</script>
 <% end %>
-<h1>Inbox</h1>
+
+<div class="checkin-box">
+
+  <%= form_tag("/checkin", method: "get") do %>
+  <%= hidden_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
+  <%= hidden_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
+  <%= submit_tag("Check In", class: "btn btn-secondary") %>
+  <% end %>
+
+</div>
+
+<div class="newmsg-box">
+  <%= link_to 'New message', new_user_message_path, class: "btn btn-primary" %>
+
+</div>
+
+<div class="">
+  <!-- <button type="button" class="btn btn-primary">
+    You have <span class="badge badge-light">4</span> unlocked messages
+  </button> -->
+
+
+  <h3>Messages unlocked here</h3>
+
+  <div class="hidden_inbox">
+    <% @close_msg.each do |message| %>
+      <p class="body"><%= message.body %></p>
+      <p class="foundLat"><%= message.msg_lat %></p>
+      <p class="foundLong"><%= message.msg_long %></p>
+    <% end %>
+  </div>
+
+  <div class="">
+    <!-- <% @close_msg.each do |message| %>
+
+
+    <% end %> -->
+
+
+  </div>
+
+
+  <h3>Previously read messages</h3>
+  <div class="list-group">
+  <% @inbox.each do |message| %>
+    <a href="#" class="list-group-item list-group-item-action">
+      <i class="fas fa-map-marker-alt"></i>
+      <small><%= message.msg_lat %>, <%= message.msg_lat %></small>
+    </a>
+  <% end %>
+  </div>
+
+
+
+</div>
+
 
 <div class="row">
   <div class="col">
-    <table>
+
+
+
+
+
+
+  </div>
+  <div class="col">
+    <!-- <table>
       <thead>
         <tr>
           <th width=250px>From</th>
@@ -29,62 +91,40 @@
         </tr>
         <% end %>
       </tbody>
-    </table>
+    </table> -->
   </div>
 </div>
 
 
 <br>
 
-<h1>Sent</h1>
-<div>
+<div style="display: none;">
 
-<table>
-  <thead>
-    <tr>
-      <th width=250px>To</th>
-      <th>Body</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @outbox.each do |message| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= User.find(message.to_user.to_i).name %></td>
-        <td><%= message.body %></td>
-        <td>
-          <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%>
-        </td>
+        <th width=250px>To</th>
+        <th>Body</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
 
-        <td class="message_msg_lat" value="<%= message.msg_lat %>"><%= message.msg_lat %></td>
-        <td class="message_msg_long" value="<%= message.msg_long %>"><%= message.msg_long %></td>
+    <tbody>
+      <% @outbox.each do |message| %>
+        <tr>
+          <td><%= User.find(message.to_user.to_i).name %></td>
+          <td><%= message.body %></td>
+          <td>
+            <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%>
+          </td>
 
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+          <td class="message_msg_lat" value="<%= message.msg_lat %>"><%= message.msg_lat %></td>
+          <td class="message_msg_long" value="<%= message.msg_long %>"><%= message.msg_long %></td>
+
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-
-<br>
-<!--
-place.latitude
-place.longitude
- -->
-</p>
-
-<%= link_to 'New message', new_user_message_path, class: "btn btn-secondary" %>
-
-<%= form_tag("/checkin", method: "get") do %>
-<%= text_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
-<%= text_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
-<%= submit_tag("Check In") %>
-<% end %>
-
-<p>
-  <div id="map-all">
-
-  </div>

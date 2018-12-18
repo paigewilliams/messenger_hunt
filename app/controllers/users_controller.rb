@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'Successful signup!'
-      session[:user_id] = @user.id
       redirect_to '/'
     else
       flash[:alert] = 'There was a problem signing up'
@@ -21,12 +20,10 @@ class UsersController < ApplicationController
   end
 
   def checkin
-    # binding.pry
     session[:lat] = params[:message_msg_lat].to_d
     session[:long] = params[:message_msg_long].to_d
 
-    flash[:notice] = "You've successfully checked in @ #{session[:lat]}, #{session[:long]} "
-
+    # flash[:notice] = "You've successfully checked in @ #{session[:lat]}, #{session[:long]} "
 
     redirect_to '/'
   end
