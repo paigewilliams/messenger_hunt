@@ -7,7 +7,6 @@ class MessagesController < ApplicationController
     @outbox = []
     @has_read_history = []
 
-
     if current_user
       @inbox = Message.where("to_user = #{current_user.id}")
       @outbox = Message.where("from_user = #{current_user.id}")
