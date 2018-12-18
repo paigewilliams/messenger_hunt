@@ -20,6 +20,20 @@
 
 </div>
 
+<% message_found = @close_msg.length > 0 ? "You've unlocked a message! 🎉 🎉 🎉" : 'No messages found here 😞' %>
+
+
+<div class="card">
+
+  <div class="card-body">
+    <h4 style="text-align: center;"><%= message_found %></h4>
+
+  </div>
+
+</div>
+
+
+
 <div class="unread_msgs_count">
   <button type="button" class="btn btn-primary">
     You have <span class="badge badge-light"><%= @hidden_msgs_count %></span> unlocked messages
@@ -31,9 +45,9 @@
 <div>
 
 
-  <h3>Messages unlocked here</h3>
 
-  <div class="hidden_inbox">
+
+  <div class="hidden">
     <!-- nearby messages list in DOM here -->
     <% @close_msg.each do |message| %>
       <p class="body"><%= message.body %></p>
@@ -42,45 +56,38 @@
     <% end %>
   </div>
 
+</div>
 
+<div>
 
+  <h4>Previously read messages</h4>
+  <div class="accordion" id="saved_messages">
+    <% @has_read_history.each do |message| %>
+    <div class="card">
 
-  <h3>Previously read messages</h3>
-
-  <% @has_read_history.each do |message| %>
-
-    <div class="card" style="width: 50%;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+      <div class="card-header" style="padding: 0;">
+        <h5 class="mb-0">
+          <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt float-right trash-pad"%>
+          <button class="btn btn-link saved_messages" type="button" data-toggle="collapse" data-target="#collapse<%= message.id %>">
+            From: <%= User.find(message.from_user.to_i).name.capitalize %>
+          </button>
+        </h5>
       </div>
+
+      <div id="collapse<%= message.id %>" class="collapse" data-parent="#saved_messages">
+        <div class="card-body">
+          <small><%= message.body %></small>
+        </div>
+      </div>
+
     </div>
-
-
-    <i class="fas fa-map-marker-alt"></i>
-
-
-      <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%>
-
-
-
-      <%= message.body %>
-      <small><%= message.msg_lat %>, <%= message.msg_long %></small>
-    </a>
-  <% end %>
-
+    <% end %>
+  </div>
 
 
 </div>
 
-
-<br>
-
-<div style="">
-  <hr>
+<div class="hidden">
   <h4>Sent Messages</h4>
 
   <table>
@@ -100,6 +107,5 @@
       <% end %>
     </tbody>
   </table>
-  <hr>
 
 </div>
