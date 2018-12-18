@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
           @close_msg.push(coor)
         end
       end
+
     end
 
 
