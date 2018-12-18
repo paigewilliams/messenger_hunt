@@ -11,8 +11,23 @@ div.flash_msg {
 div.checkin-box {
   display: block;
   width: 100%;
-  margin: 10px 0;
+  margin: 15px 0;
 
+}
+
+div.top_of_sidebar {
+  margin-bottom: 15px;
+}
+
+div.middle_of_sidebar {
+  // text-overflow: ellipsis;
+  // overflow: scroll;
+  height: calc(90vh - 260px);
+
+}
+
+.top_of_sidebar .card {
+  margin-bottom: 15px;
 }
 
 

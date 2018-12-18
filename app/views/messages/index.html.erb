@@ -6,6 +6,7 @@
 <% end %>
 
 <div class="top_of_sidebar">
+
   <div class="checkin-box">
     <%= form_tag("/checkin", method: "get") do %>
     <%= hidden_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
@@ -14,49 +15,58 @@
     <% end %>
   </div>
 
-  <% message_found = @close_msg.length > 0 ? "You've unlocked a message! 🎉 🎉 🎉" : 'No messages found here 😞' %>
 
   <div class="card">
     <div class="card-body">
+      <% message_found = @close_msg.length > 0 ? "You've unlocked a message!  🎉 🎉 🎉" : 'No messages for you here 😞' %>
       <h4 style="text-align: center;"><%= message_found %></h4>
     </div>
   </div>
 
-  <div class="unread_msgs_count">
-    <button type="button" class="btn btn-primary">
-      You have <span class="badge badge-light"><%= @hidden_msgs_count %></span> unlocked messages
-    </button>
-  </div>
-</div>
-
-
-<div class="middle_of_sidebar">
-
-  <h4>Previously read messages</h4>
-  <div class="accordion" id="saved_messages">
-    <% @has_read_history.each do |message| %>
-    <div class="card">
-
-      <div class="card-header" style="padding: 0;">
-        <h5 class="mb-0">
-          <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt float-right trash-pad"%>
-          <button class="btn btn-link saved_messages" type="button" data-toggle="collapse" data-target="#collapse<%= message.id %>">
-            From: <%= User.find(message.from_user.to_i).name.capitalize %>
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapse<%= message.id %>" class="collapse" data-parent="#saved_messages">
-        <div class="card-body">
-          <small><%= message.body %></small>
-        </div>
-      </div>
-
+  <% if @hidden_msgs_count > 0 %>
+    <div class="unread_msgs_count">
+      <button type="button" class="btn btn-primary">
+        You have <span class="badge badge-light"><%= @hidden_msgs_count %></span> hidden <%= pluralize(@hidden_msgs_count, 'message') %>
+      </button>
     </div>
-    <% end %>
-  </div>
+  <% end %>
+
 
 </div>
+
+<% if @has_read_history.length > 0 %>
+
+  <div class="middle_of_sidebar">
+
+    <h4>Previously read messages</h4>
+    <div class="accordion" id="saved_messages">
+      <% @has_read_history.each do |message| %>
+      <div class="card">
+
+        <div class="card-header" style="padding: 0;">
+          <h5 class="mb-0">
+            <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt float-right trash-pad"%>
+            <button class="btn btn-link saved_messages" type="button" data-toggle="collapse" data-target="#collapse<%= message.id %>">
+              From: <%= User.find(message.from_user.to_i).name.capitalize %>
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapse<%= message.id %>" class="collapse" data-parent="#saved_messages">
+          <div class="card-body">
+            <small><%= message.body %></small>
+          </div>
+        </div>
+
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>
+
+
+
 
 <div class="bottom_of_sidebar">
   <div class="newmsg-box">
