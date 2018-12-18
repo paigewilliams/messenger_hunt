@@ -18,8 +18,10 @@ div.checkin-box {
 
 button.saved_messages {
   color: #5d5d5d;
+}
 
-
+.unread_msgs_count button {
+  width: 100%;
 }
 
 .trash-pad {
