@@ -26,7 +26,8 @@
   <% if @hidden_msgs_count > 0 %>
     <div class="unread_msgs_count">
       <button type="button" class="btn btn-primary">
-        You have <span class="badge badge-light"><%= @hidden_msgs_count %></span> hidden <%= pluralize(@hidden_msgs_count, 'message') %>
+
+        You have <span class="badge badge-light"><%= @hidden_msgs_count %></span> hidden <%= pluralize(@hidden_msgs_count, 'message').gsub(/\d\s/,'') %>
       </button>
     </div>
   <% end %>
