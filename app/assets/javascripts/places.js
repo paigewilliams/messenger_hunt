@@ -395,6 +395,42 @@ function initMapAll() {
     });
     foundMarkers.push(marker)
   }
+
+  // var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+  var icons = {
+    parking: {
+      name: 'Current Location',
+      icon: '/mapmarkerhighresred.png'
+    },
+    library: {
+      name: 'Sent Messages',
+      icon: '/mapmarkeradj2.png'
+    },
+    info: {
+      name: 'Found Message',
+      icon: '/mapmarkerhighresblue.png'
+    }
+  };
+
+  var legend = document.getElementById('legend');
+    for (var key in icons) {
+      var type = icons[key];
+      var name = type.name;
+      var icon = type.icon;
+      var div = document.createElement('div');
+      div.innerHTML = '<img src="' + icon + '"> ' + name;
+      legend.appendChild(div);
+    }
+
+
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
+
+
+
+
+
+
 }
 
 // ====================================================================================

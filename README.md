@@ -12,6 +12,8 @@ Message Hunter is a hot new geolocation social networking site that makes messag
 
 Users can log in, check in anywhere in the world, and leave location-specific messages for other users to find.
 
+A personal dashboard will show you a
+
 If you check in near the location of a message sent to you by another user, a special notification will appear, granting you access to view and save your special hidden message.
 
 What fun!!!
@@ -51,21 +53,24 @@ View specs [here](https://github.com/pseudoralph/messenger_hunt/tree/master/spec
 
 ## Further Development
 
-  ### MVP
+  ### Current Features
   - [x] Unique user authentication
   - [x] Ability to send a message to another user
   - [x] Ability to save a message at a specific location on a dynamic map
   - [x] Ability to 'check-in' at a specific location on a dynamic map
   - [x] Recipient of a message can read their message when within a certain distance of a message
+  - [x] Link a message with map marker location
 
   ### Extra Functionality
-  - [x] Link a message with map marker location
+  - [ ] Ability to review all previously sent messages in a dashboard list
+  - [ ] Add form validations and more descriptive alert messages
   - [ ] Show pin locations of all found messages on map
   - [ ] User specific friends list
   - [ ] Ability to hide messages for multiple friends in one check in
   - [ ] A user will get a notification if they are getting closer or farther away from a message with consecutive check-ins (i.e. 'hotter'/'colder')
+  - [ ] Reply back to messages to enable location-based conversation.
+  - [ ] Prevent concurrent sessions for a single user
   - [ ] Mobile support
-  - [ ]
 
 ## Support and Contact Details
 
@@ -79,6 +84,9 @@ If you have any issues or questions, please email us at:
 2. **Rails 5**
 3. **JavaScript**
 4. [**Google Maps API**](https://developers.google.com/maps/documentation/javascript/tutorial)
+
+## Known Bugs
+- No known bugs
 
 ## Legal
 
