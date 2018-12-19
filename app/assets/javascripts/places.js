@@ -344,8 +344,8 @@ function initMapAll() {
   };
 
   var iconGrey ={
-    url: '/mapmarkeradj.png',
-    scaledSize: new google.maps.Size(36, 33)
+    url: '/mapmarkeradj2.png',
+    scaledSize: new google.maps.Size(23, 33)
   }
 
   for(var i = 0; i < locations.length; i++){
