@@ -7,13 +7,15 @@ class SessionsController < ApplicationController
 
   end
 
+
+
   def create
-    @user = User.authenticate(params[:name], params[:password])
+    @user = User.authenticate(params[:name].capitalize, params[:password])
     if @user
-      # flash[:notice] = 'Sucesfully logged in '
+      flash[:notice] = "Welcome #{@user.name}!"
 
       session[:user_id] = @user.id
-      # home set to epicodus lat/long
+      # home set to Epicodus lat/long
       session[:lat] = 45.520626
       session[:long] = -122.6795871
 

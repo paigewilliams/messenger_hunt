@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :destroy]
 
   def index
+
     @checkin = [session[:lat].to_f, session[:long].to_f]
     @inbox = []
     @outbox = []

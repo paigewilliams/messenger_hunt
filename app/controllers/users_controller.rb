@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.name = @user.name.capitalize
     if @user.save
       flash[:notice] = 'Successful signup!'
       redirect_to '/'
