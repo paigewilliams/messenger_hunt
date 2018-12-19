@@ -100,20 +100,22 @@ div.newmsg-box {
 
 #ui {
   background-color: #F7F7F7;
+  margin-left: -15px;
 }
 
-#map {
-  width: 600px;
-  height: 400px;
-}
-#map2 {
-    width: 600px;
-    height: 400px;
-}
+// #map {
+//   width: 600px;
+//   height: 400px;
+// }
+// #map2 {
+//     width: 600px;
+//     height: 400px;
+// }
 
 #map-all {
   width: 100%;
   height: calc(100vh - 56px);
+  margin: 0 -15px;
 }
 
 #sign-in-btn {
