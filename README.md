@@ -8,15 +8,17 @@
 
 ## Description
 
-Message Hunter is a hot new geolocation social networking site that makes messaging _fun_ again.
+Message Hunter is a hot new geolocation social networking app that makes messaging _fun_ again.
 
 Users can log in, check in anywhere in the world, and leave location-specific messages for other users to find.
 
-A personal dashboard will show you a
+Your personal dashboard shows the running total of unfound messages waiting somewhere for you to discover.
 
 If you check in near the location of a message sent to you by another user, a special notification will appear, granting you access to view and save your special hidden message.
 
 What fun!!!
+
+Found messages are saved to your dashboard for future nostalgic reading.
 
 Travel the world with Message Hunter, leaving a trail of hidden messages for friends to discover as they embark on their own journey of global self-discovery.
 

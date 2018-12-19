@@ -9,10 +9,3 @@ class ApplicationController < ActionController::Base
   end
 
 end
-
-
-# def current_user
-#   if User.where("id = #{session[:user_id]}") != []
-#     @current_user ||= User.find(session[:user_id])
-#   end
-# end
