@@ -10,9 +10,9 @@ a {
   color: #1E6583;
 }
 
-.btn {
+.fancy-font {
   font-family: Pacifico;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .navbar {
@@ -74,8 +74,8 @@ div.hidden {
 }
 
 div.newmsg-box {
-  position: fixed;
-  bottom: 0;
+  // position: fixed;
+  // bottom: 0;
 
   display: block;
   width: 100%;
@@ -84,8 +84,8 @@ div.newmsg-box {
 
 .newmsg-box a {
 
-  display: inline-block;
-  width: 23%;
+  display: block;
+  // width: 23%;
   background-color: #1E6583 !important;
   border-color: #1E6583
 
