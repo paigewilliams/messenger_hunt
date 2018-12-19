@@ -18,7 +18,7 @@ If you check in near the location of a message sent to you by another user, a sp
 
 What fun!!!
 
-With Message Hunter, travel the world leaving a trail of hidden messages for your new (and future) friends to discover as they embark on their own journey of global self-discovery.
+Travel the world with Message Hunter, leaving a trail of hidden messages for friends to discover as they embark on their own journey of global self-discovery.
 
 **Happy hunting!**
 
