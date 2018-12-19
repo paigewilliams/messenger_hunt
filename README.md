@@ -60,9 +60,12 @@ View specs [here](https://github.com/pseudoralph/messenger_hunt/tree/master/spec
 
   ### Extra Functionality
   - [x] Link a message with map marker location
-  - [ ] Ability to set public messages
-  - [ ] A user specific friends list
-  - [ ] A user will get a notification if they are getting closer or farther away from a message with consecutive check-in's
+  - [ ] Show pin locations of all found messages on map
+  - [ ] User specific friends list
+  - [ ] Ability to hide messages for multiple friends in one check in
+  - [ ] A user will get a notification if they are getting closer or farther away from a message with consecutive check-ins (i.e. 'hotter'/'colder')
+  - [ ] Mobile support
+  - [ ]
 
 ## Support and Contact Details
 
