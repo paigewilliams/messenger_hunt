@@ -118,9 +118,24 @@ div.hidden {
 
 #legend {
   font-family: Helvetica, sans-serif;
-  background: rgba(247,247,247, 0.8);
-  padding: 10px;
+  padding: 10px 10px 0;
   margin: 10px;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  border-radius: 2px;
+  // width: 140px;
+  // height: 140px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+
+
+}
+
+#legend div {
+  margin-bottom: 10px;
+
 }
 
 #legend h5 {
@@ -130,3 +145,13 @@ div.hidden {
   vertical-align: middle;
   height: 30px;
 }
+
+    //
+    // background-color: rgb(255, 255, 255);
+    // box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    // border-radius: 2px;
+    // width: 40px;
+    // height: 40px;
+    // position: absolute;
+    // left: 0px;
+    // top: 0px;
