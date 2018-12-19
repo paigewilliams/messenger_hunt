@@ -4,7 +4,7 @@
 
 ## Contributors
 
-### _Paige Williams, Ben Kirby, Jared Reando, Ralph Perdomo_ 
+### _Paige Williams, Ben Kirby, Jared Reando, Ralph Perdomo_
 
 ## Description
 
@@ -12,7 +12,7 @@ Messenger Hunt is a geolocation social netwoking site. The user can set their lo
 
 ## Configuration and Design
 
-(public/db_schema.png)
+![alt-text](https://github.com/pseudoralph/messenger_hunt/blob/master/public/db_schema.png)
 
 ## Specs  
 
@@ -20,17 +20,17 @@ View specs [here](https://github.com/paigewilliams/providore-website/tree/master
 
 ## MVP
 
- [x] Unique user authentication
- [x] Ability to send a message to another user
- [x] Ability to save a message at a specific location on a dynamic map
- [x] Ability to 'check-in' at a specific location on a dynamic map
- [x] Recipient of a message can read their message when within a certain distance of a message
+- [x] Unique user authentication
+- [x] Ability to send a message to another user
+- [x] Ability to save a message at a specific location on a dynamic map
+- [x] Ability to 'check-in' at a specific location on a dynamic map
+- [x] Recipient of a message can read their message when within a certain distance of a message
 
 ## Extra Functionality
- [x] Link a message with map marker location
- [ ] Ability to set public messages
- [ ] A user specific friends list
- [ ] A user will get a notification if they are getting closer or farther away from a message with consecutive check-in's
+- [x] Link a message with map marker location
+- [ ] Ability to set public messages
+- [ ] A user specific friends list
+- [ ] A user will get a notification if they are getting closer or farther away from a message with consecutive check-in's
 
 
 ## Setup and Installation
