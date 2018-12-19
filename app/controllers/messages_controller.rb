@@ -5,16 +5,16 @@ class MessagesController < ApplicationController
     @checkin = [session[:lat].to_f, session[:long].to_f]
     @inbox = []
     @outbox = []
-
     @has_read_history = []
-
-
-
-    # @inbox = Message.where("to_user = #{current_user.id} AND read='true'")
 
     if current_user
       @inbox = Message.where("to_user = #{current_user.id}")
       @outbox = Message.where("from_user = #{current_user.id}")
+
+      @hidden_msgs_count = Message.where("to_user = #{current_user.id} AND read='false'").length
+
+      @has_read_history = Message.where("to_user = #{current_user.id} AND read='true'")
+
     end
 
     @close_msg = []
@@ -30,8 +30,6 @@ class MessagesController < ApplicationController
       end
   end
 
-
-
   def show
     @message.read = true
     @message.save
@@ -39,8 +37,6 @@ class MessagesController < ApplicationController
   end
 
   def new
-    # @place = Place.new
-
     @message = current_user.messages.new
   end
 
@@ -54,8 +50,10 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message.destroy
-    redirect_to user_messages_path, notice: 'Message successfully un-sent.'
+    if current_user.id == @message.to_user
+      @message.destroy
+      redirect_to user_messages_path
+    end
   end
 
   private

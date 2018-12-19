@@ -36,8 +36,41 @@ div.flash_msg {
 div.checkin-box {
   display: block;
   width: 100%;
-  margin: 10px 0;
+  margin: 15px 0;
 
+}
+
+div.top_of_sidebar {
+  margin-bottom: 15px;
+}
+
+div.middle_of_sidebar {
+  // text-overflow: ellipsis;
+  // overflow: scroll;
+  height: calc(90vh - 260px);
+
+}
+
+.top_of_sidebar .card {
+  margin-bottom: 15px;
+}
+
+
+button.saved_messages {
+  color: #5d5d5d;
+}
+
+.unread_msgs_count button {
+  width: 100%;
+}
+
+.trash-pad {
+  padding: 10px;
+  color: #5d5d5d;
+}
+
+div.hidden {
+  display: none;
 }
 
 div.newmsg-box {

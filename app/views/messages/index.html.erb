@@ -5,126 +5,105 @@
 </script>
 <% end %>
 
-<div class="checkin-box">
+<div class="top_of_sidebar">
 
-  <%= form_tag("/checkin", method: "get") do %>
-  <%= hidden_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
-  <%= hidden_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
-  <%= submit_tag("Check In", class: "btn btn-secondary") %>
-  <% end %>
-
-</div>
-
-<div class="newmsg-box">
-  <%= link_to 'New Message', new_user_message_path, class: "btn btn-primary" %>
-
-</div>
-
-<div class="">
-  <!-- <button type="button" class="btn btn-primary">
-    You have <span class="badge badge-light">4</span> unlocked messages
-  </button> -->
-
-
-  <h3>Messages unlocked here</h3>
-
-  <div class="hidden_inbox">
-    <% @close_msg.each do |message| %>
-      <p class="body"><%= message.body %></p>
-      <p class="foundLat"><%= message.msg_lat %></p>
-      <p class="foundLong"><%= message.msg_long %></p>
+  <div class="checkin-box">
+    <%= form_tag("/checkin", method: "get") do %>
+    <%= hidden_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
+    <%= hidden_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
+    <%= submit_tag("Check In", class: "btn btn-secondary") %>
     <% end %>
   </div>
 
-  <div class="">
-    <!-- <% @close_msg.each do |message| %>
 
-
-    <% end %> -->
-
-
+  <div class="card">
+    <div class="card-body">
+      <% message_found = @close_msg.length > 0 ? "You've unlocked a message!  🎉 🎉 🎉" : 'No messages for you here 😞' %>
+      <h4 style="text-align: center;"><%= message_found %></h4>
+    </div>
   </div>
 
+  <% if @hidden_msgs_count > 0 %>
+    <div class="unread_msgs_count">
+      <button type="button" class="btn btn-primary">
 
-  <h3>Previously read messages</h3>
-  <div class="list-group">
-  <% @inbox.each do |message| %>
-    <a href="#" class="list-group-item list-group-item-action">
-      <i class="fas fa-map-marker-alt"></i>
-      <small><%= message.msg_lat %>, <%= message.msg_lat %></small>
-    </a>
+        You have <span class="badge badge-light"><%= @hidden_msgs_count %></span> hidden <%= pluralize(@hidden_msgs_count, 'message').gsub(/\d\s/,'') %>
+      </button>
+    </div>
   <% end %>
-  </div>
-
 
 
 </div>
 
+<% if @has_read_history.length > 0 %>
 
-<div class="row">
-  <div class="col">
+  <div class="middle_of_sidebar">
 
+    <h4>Previously read messages</h4>
+    <div class="accordion" id="saved_messages">
+      <% @has_read_history.each do |message| %>
+      <div class="card">
 
+        <div class="card-header" style="padding: 0;">
+          <h5 class="mb-0">
+            <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt float-right trash-pad"%>
+            <button class="btn btn-link saved_messages" type="button" data-toggle="collapse" data-target="#collapse<%= message.id %>">
+              From: <%= User.find(message.from_user.to_i).name.capitalize %>
+            </button>
+          </h5>
+        </div>
 
+        <div id="collapse<%= message.id %>" class="collapse" data-parent="#saved_messages">
+          <div class="card-body">
+            <small><%= message.body %></small>
+          </div>
+        </div>
 
-
+      </div>
+      <% end %>
+    </div>
 
   </div>
-  <div class="col">
-    <!-- <table>
+<% end %>
+
+
+
+
+<div class="bottom_of_sidebar">
+  <div class="newmsg-box">
+    <%= link_to 'New message', new_user_message_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+
+
+<div class="hidden">
+  <!-- these elements hidden for DOM querying needed for google maps integration -->
+  <% @close_msg.each do |message| %>
+    <p class="body"><%= message.body %></p>
+    <p class="foundLat"><%= message.msg_lat %></p>
+    <p class="foundLong"><%= message.msg_long %></p>
+  <% end %>
+
+  <div>
+    <h4>Sent Messages</h4>
+    <table>
       <thead>
         <tr>
-          <th width=250px>From</th>
-          <th>Read</th>
+          <th >To</th>
+          <th ><i class="fas fa-map-marker-alt"></i></th>
         </tr>
       </thead>
-
       <tbody>
-        <% @close_msg.each do |message| %>
-        <tr>
-          <td class="fromName" width=250px><%= link_to User.find(message.from_user.to_i).name, user_message_path(id: message) %></td>
-          <td><%= status = message.read == true ? 'read' : 'unread' %></td>
-          <td class="body" value="<%= message.body %>" style="display: none"></td>
-          <td class="foundLat" value="<%= message.msg_lat %>" style="display: none"></td>
-          <td class="foundLong" value="<%= message.msg_long %>" style="display: none"></td>
-          </div>
-        </tr>
+        <% @outbox.each do |message| %>
+          <tr>
+            <td><%= User.find(message.to_user.to_i).name.capitalize %></td>
+            <td class="message_msg_lat" value="<%= message.msg_lat %>"><small><%= message.msg_lat %></small></td>
+            <td class="message_msg_long" value="<%= message.msg_long %>"><small><%= message.msg_long %></small></td>
+          </tr>
         <% end %>
       </tbody>
-    </table> -->
+    </table>
   </div>
-</div>
 
-
-<br>
-
-<div style="display: none;">
-
-  <table>
-    <thead>
-      <tr>
-        <th width=250px>To</th>
-        <th>Body</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @outbox.each do |message| %>
-        <tr>
-          <td><%= User.find(message.to_user.to_i).name %></td>
-          <td><%= message.body %></td>
-          <td>
-            <%= link_to '', user_message_path(id: message), method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt"%>
-          </td>
-
-          <td class="message_msg_lat" value="<%= message.msg_lat %>"><%= message.msg_lat %></td>
-          <td class="message_msg_long" value="<%= message.msg_long %>"><%= message.msg_long %></td>
-
-          </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
