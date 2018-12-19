@@ -17,12 +17,16 @@ a {
 
 .navbar {
   background-color: #F7F7F7;
-
 }
 
 .navbar-brand {
   font-family: Pacifico;
   font-size: 30px;
+}
+
+div.map-viewport {
+  padding-right: 0px;
+  padding-left: 0px
 }
 
 div.flash_msg {
@@ -45,10 +49,17 @@ div.top_of_sidebar {
 }
 
 div.middle_of_sidebar {
-  // text-overflow: ellipsis;
-  // overflow: scroll;
   height: calc(90vh - 260px);
+}
 
+a.go-back {
+  margin-top: 20px;
+  display: block;
+  font-size: 3rem;
+}
+
+a:hover.go-back {
+  text-decoration: none;
 }
 
 .top_of_sidebar .card {
@@ -100,7 +111,7 @@ div.newmsg-box {
 
 #ui {
   background-color: #F7F7F7;
-  margin-left: -15px;
+  // margin-left: -15px;
 }
 
 // #map {
@@ -115,7 +126,7 @@ div.newmsg-box {
 #map-all {
   width: 100%;
   height: calc(100vh - 56px);
-  margin: 0 -15px;
+  // margin: 0 -15px;
 }
 
 #sign-in-btn {
