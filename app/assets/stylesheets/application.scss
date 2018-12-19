@@ -125,3 +125,18 @@ div.newmsg-box {
   background-color: #1E6583 !important;
   border-color: #1E6583
 }
+
+#legend {
+  font-family: Helvetica, sans-serif;
+  background: rgba(247,247,247, 0.8);
+  padding: 10px;
+  margin: 10px;
+}
+
+#legend h5 {
+  margin-top: 0;
+}
+#legend img {
+  vertical-align: middle;
+  height: 30px;
+}
