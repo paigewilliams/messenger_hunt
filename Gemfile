@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.5.3'
 
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -19,13 +19,13 @@ gem 'pivotal_git_scripts'
 gem 'haversine'
 
 
-group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  gem 'launchy'
-  gem 'pry'
-  gem 'shoulda-matchers'
-end
+# group :development, :test do
+  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'rspec-rails'
+  # gem 'launchy'
+  # gem 'pry'
+  # gem 'shoulda-matchers'
+# end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
