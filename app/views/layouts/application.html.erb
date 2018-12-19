@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
 
-    <title>MessengerHunt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Message Hunter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -16,7 +19,7 @@
 
   <body>
     <nav class="navbar">
-      <span class="navbar-brand mb-0 h1">Messenger Hunt</span>
+      <span class="navbar-brand mb-0 h1">Message Hunter</span>
         <% if current_user  %>
         <small>Checked in at :   <i class="fas fa-map-marker-alt"></i> <%= session[:lat] %>, <%= session[:long] %></small>
 
@@ -52,7 +55,7 @@
         <% end %>
 
 
-        <div class="col-md-9" style="margin: 0 -15px;">
+        <div class="col-md-9 map-viewport" >
           <div id="map-all"></div>
           <div id="legend"><h5>Legend</h5></div>
         </div>

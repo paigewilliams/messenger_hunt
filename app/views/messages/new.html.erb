@@ -5,11 +5,11 @@
 </script>
 <% end %>
 
-<h3>New Message</h3>
+<h3 class="fancy-font" style="font-size: 22px;">New Message</h3>
 
 <%= render 'form', message: @message %>
 
 
 
 
-<%= link_to 'Back', user_messages_path %>
+<%= link_to '🔙', user_messages_path, class:"go-back" %>

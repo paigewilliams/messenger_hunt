@@ -11,8 +11,12 @@
     <%= form_tag("/checkin", method: "get") do %>
     <%= hidden_field_tag(:message_msg_lat, '', value: session[:lat].to_f) %>
     <%= hidden_field_tag(:message_msg_long, '', value: session[:long].to_f) %>
-    <%= submit_tag("Check In", class: "btn btn-secondary") %>
+    <%= submit_tag("Check In", class: "btn btn-secondary fancy-font") %>
     <% end %>
+  </div>
+
+  <div class="newmsg-box">
+    <%= link_to 'New message', new_user_message_path, class: "btn btn-primary fancy-font" %>
   </div>
 
 
@@ -39,7 +43,7 @@
 
   <div class="middle_of_sidebar">
 
-    <h4>Previously read messages</h4>
+    <h4>Found messages</h4>
     <div class="accordion" id="saved_messages">
       <% @has_read_history.each do |message| %>
       <div class="card">
@@ -65,15 +69,6 @@
 
   </div>
 <% end %>
-
-
-
-
-<div class="bottom_of_sidebar">
-  <div class="newmsg-box">
-    <%= link_to 'New message', new_user_message_path, class: "btn btn-primary" %>
-  </div>
-</div>
 
 
 
