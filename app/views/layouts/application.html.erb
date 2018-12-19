@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Message Hunter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmE8T1QkDeOjZxMhHU73L02DH-vJIvCG4' %>
-
     <%= yield(:head_tags) %>
   </head>
 
@@ -22,18 +18,15 @@
       <span class="navbar-brand mb-0 h1">Message Hunter</span>
         <% if current_user  %>
         <small>Checked in at :   <i class="fas fa-map-marker-alt"></i> <%= session[:lat] %>, <%= session[:long] %></small>
-
         <div class="float-right">
         <small> <%= current_user.name %> | <%= link_to "Sign out", '/signout' %> </small>
         <% else %>
         <small> <%= link_to "Sign up", '/signup'  %> | <%= link_to "Sign in", '/signin' %> </small>
       </div>
         <% end %>
-
     </nav>
 
     <div class="container-fluid">
-
       <div class="row">
 
         <% if flash[:alert] %>
@@ -54,7 +47,6 @@
           </div>
         <% end %>
 
-
         <div class="col-md-9 map-viewport" >
           <div id="map-all"></div>
           <div id="legend"><h5>Legend</h5></div>
@@ -65,10 +57,6 @@
         </div>
 
       </div>
-
-
     </div>
-
-
   </body>
 </html>

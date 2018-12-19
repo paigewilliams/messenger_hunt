@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.name = @user.name.capitalize
+
     if @user.save
       flash[:notice] = 'Successful signup!'
       redirect_to '/'
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
       flash[:alert] = 'There was a problem signing up'
       redirect_to '/signup'
     end
+
   end
 
   def index
@@ -23,15 +25,11 @@ class UsersController < ApplicationController
   def checkin
     session[:lat] = params[:message_msg_lat].to_d
     session[:long] = params[:message_msg_long].to_d
-
-    # flash[:notice] = "You've successfully checked in @ #{session[:lat]}, #{session[:long]} "
-
     redirect_to '/'
   end
 
-  private
+private
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)
   end
-
 end
