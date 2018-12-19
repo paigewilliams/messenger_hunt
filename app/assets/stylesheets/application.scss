@@ -37,10 +37,10 @@ div.flash_msg {
   background-color: #d4eddaf5 !important;
 }
 
-div.checkin-box {
+div.checkin-box, div.newmsg-box {
   display: block;
   width: 100%;
-  margin: 15px 0;
+  margin: 0 0 15px;
 
 }
 
@@ -55,7 +55,7 @@ div.middle_of_sidebar {
 a.go-back {
   margin-top: 20px;
   display: block;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 a:hover.go-back {
@@ -84,49 +84,26 @@ div.hidden {
   display: none;
 }
 
-div.newmsg-box {
-  // position: fixed;
-  // bottom: 0;
-
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-}
-
 .newmsg-box a {
-
   display: block;
-  // width: 23%;
   background-color: #1E6583 !important;
   border-color: #1E6583
-
 }
 
 .checkin-box input[type=submit] {
   width: 100%;
   background-color: #7D2F36 !important;
   border-color: #7D2F36
-
 }
 
 #ui {
   background-color: #F7F7F7;
-  // margin-left: -15px;
-}
-
-// #map {
-//   width: 600px;
-//   height: 400px;
-// }
-// #map2 {
-//     width: 600px;
-//     height: 400px;
-// }
+  margin-top: 15px;
+  }
 
 #map-all {
   width: 100%;
   height: calc(100vh - 56px);
-  // margin: 0 -15px;
 }
 
 #sign-in-btn {
