@@ -1,4 +1,4 @@
-# Messenger Hunt
+# Message Hunter
 
 #### December 19th, 2018
 
@@ -8,30 +8,19 @@
 
 ## Description
 
-Messenger Hunt is a geolocation social netwoking site. The user can set their location and can leave messages at specific locations. The recepient of a message can read their messages if they set their location within 1/10th of a mile of a message.
+Message Hunter is a hot new geolocation social networking site that makes messaging _fun_ again.
 
-## Configuration and Design
+Users can log in, check in anywhere in the world, and leave location-specific messages for other users to find.
 
-![alt-text](https://github.com/pseudoralph/messenger_hunt/blob/master/public/db_schema.png)
+If you check in near the location of a message sent to you by another user, a special notification will appear, granting you access to view and save your special hidden message.
 
-## Specs  
+What fun!!!
 
-View specs [here](https://github.com/paigewilliams/providore-website/tree/master/spec/models).
+With Message Hunter, travel the world leaving a trail of hidden messages for your new (and future) friends to discover as they embark on their own journey of global self-discovery.
 
-## MVP
+**Happy hunting!**
 
-- [x] Unique user authentication
-- [x] Ability to send a message to another user
-- [x] Ability to save a message at a specific location on a dynamic map
-- [x] Ability to 'check-in' at a specific location on a dynamic map
-- [x] Recipient of a message can read their message when within a certain distance of a message
-
-## Extra Functionality
-- [x] Link a message with map marker location
-- [ ] Ability to set public messages
-- [ ] A user specific friends list
-- [ ] A user will get a notification if they are getting closer or farther away from a message with consecutive check-in's
-
+(View the site hosted [HERE](http://message-hunter.herokuapp.com/) on Heroku)
 
 ## Setup and Installation
 
@@ -52,9 +41,34 @@ rails s
 rspec
 ```
 
+## Specs  
+
+View specs [here](https://github.com/pseudoralph/messenger_hunt/tree/master/spec).
+
+## Database Schema
+
+![alt-text](https://github.com/pseudoralph/messenger_hunt/blob/master/public/db_schema.png)
+
+## Further Development
+
+  ### MVP
+  - [x] Unique user authentication
+  - [x] Ability to send a message to another user
+  - [x] Ability to save a message at a specific location on a dynamic map
+  - [x] Ability to 'check-in' at a specific location on a dynamic map
+  - [x] Recipient of a message can read their message when within a certain distance of a message
+
+  ### Extra Functionality
+  - [x] Link a message with map marker location
+  - [ ] Ability to set public messages
+  - [ ] A user specific friends list
+  - [ ] A user will get a notification if they are getting closer or farther away from a message with consecutive check-in's
+
 ## Support and Contact Details
 
-If you have any issues or questions, please email me at paw145@humboldt.edu
+If you have any issues or questions, please email us at:
+  - Paige: paw145@humboldt.edu
+
 
 ## Technologies used
 
@@ -65,4 +79,4 @@ If you have any issues or questions, please email me at paw145@humboldt.edu
 
 ## Legal
 
-Copyright (c) 2018 Paige Williams
+Copyright (c) 2018 Paige Williams, Ben Kirby, Jared Reando, Ralph Perdomo
