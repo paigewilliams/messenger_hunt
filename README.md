@@ -6,7 +6,7 @@
 
 ### _Paige Williams, Ben Kirby, Jared Reando, Ralph Perdomo_
 
-![alt-text](https://github.com/pseudoralph/messenger_hunt/blob/master/public/db_schema.png)
+![alt-text](https://github.com/pseudoralph/messenger_hunt/blob/master/public/Screen%20Shot%202018-12-20%20at%208.09.48%20AM.png)
 
 ## Description
 
