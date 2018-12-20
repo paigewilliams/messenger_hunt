@@ -6,9 +6,9 @@
 
 ### _Paige Williams, Ben Kirby, Jared Reando, Ralph Perdomo_
 
-![alt-text](https://github.com/pseudoralph/messenger_hunt/blob/master/public/Screen%20Shot%202018-12-20%20at%208.09.48%20AM.png)
-
 ## Description
+
+![alt-text](https://github.com/pseudoralph/messenger_hunt/blob/master/public/Screen%20Shot%202018-12-20%20at%208.09.48%20AM.png)
 
 Message Hunter is a hot new geolocation social networking site that makes messaging _fun_ again.
 
